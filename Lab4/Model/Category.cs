@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab4.Model
 {
-    public class RegisterUser
+    public class Category
     {
-        public static string? UserName { get; set; }
-        public static string? access_token { get; set; }
+        public long CategoryId { get; set; }
+        public string? Name { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Model
 {
-    class User
+    public class User
     {
         public long IdUser { get; set; }
         public required string Login { get; set; }

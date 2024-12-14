@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4.Model
 {
-    class Response
+    public class Response
     {
         public string? access_token { get; set; }
         public string? username { get; set; }

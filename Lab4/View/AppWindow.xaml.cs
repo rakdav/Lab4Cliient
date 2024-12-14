@@ -29,6 +29,10 @@ namespace Lab4.View
             InitializeComponent();
             DataContext = new AppWindowViewModel();
         }
-        
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MainWindow.Instance!.Close();
+        }
     }
 }
