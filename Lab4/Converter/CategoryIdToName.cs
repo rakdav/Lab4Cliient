@@ -7,11 +7,12 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace Lab4.Converter
 {
-    public class CategoryIdToName : IValueConverter
+    public class CategoryNameConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -25,12 +26,11 @@ namespace Lab4.Converter
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + RegisterUser.access_token);
             Category? category = await client.
                 GetFromJsonAsync<Category>("http://localhost:5000/api/Categories/" + id);
-            
             return category!;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return DependencyProperty.UnsetValue;
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Lab4.ViewModel
                               RegisterUser.UserName = resp.username;
                               RegisterUser.access_token = resp.access_token;
                               Visibility = Visibility.Hidden;
-                              AppWindow window = new AppWindow();
+                              MenuWindow window = new MenuWindow();
                               window.Show();
                           } 
                       }
