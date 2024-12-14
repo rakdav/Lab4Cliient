@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4"
         mc:Ignorable="d"
-        Title="Авторизация" Height="300" Width="400">
+        Title="Авторизация" Height="300" Width="400" Visibility="{Binding Visibility, Mode=TwoWay}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

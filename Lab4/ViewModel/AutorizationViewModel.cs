@@ -11,32 +11,46 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Lab4.View;
 using System.Windows.Controls;
+using System.Windows;
 namespace Lab4.ViewModel
 {
     internal class AutorizationViewModel: INotifyPropertyChanged
     {
-        private string login;
+        private Visibility visibility;
+        public Visibility Visibility
+        {
+            get
+            {
+                return visibility;
+            }
+            set
+            {
+                visibility = value;
+                OnPropertyChanged("Visibility");
+            }
+        }
+        private string? login;
         public string Login
         {
-            get { return login; }
+            get { return login!; }
             set
             {
                 login = value;
-                OnPropertyChanged("Login");
+                OnPropertyChanged(nameof(Login));
             }
         }
-        private string password;
+        private string? password;
         public string LoginPassword
         {
-            get { return password; }
+            get { return password!; }
             set
             {
                 password = value;
-                OnPropertyChanged("LoginPassword");
+                OnPropertyChanged(nameof(LoginPassword));
             }
         }
 
-        private RelayCommand loginCommand;
+        private RelayCommand? loginCommand;
         public RelayCommand LoginCommand
         {
             get
@@ -50,12 +64,21 @@ namespace Lab4.ViewModel
                       JsonContent content = JsonContent.Create(user);
                       using var response = await client.PostAsync("http://localhost:5000/login", content);
                       string responseText = await response.Content.ReadAsStringAsync();
-                      Response? resp = JsonSerializer.Deserialize<Response>(responseText);
-                      if (resp != null)
+                      if (responseText != "")
                       {
-                          AppWindow window = new AppWindow();
-                          window.Show();
+                          Response? resp = JsonSerializer.Deserialize<Response>(responseText);
+                          if (resp != null)
+                          {
+                              RegisterUser.UserName = resp.username;
+                              RegisterUser.access_token = resp.access_token;
+                              Visibility = Visibility.Hidden;
+                              AppWindow window = new AppWindow();
+                              window.Show();
+                          } 
                       }
+                      else MessageBox.Show("Пользователь с таким именем или паролем " +
+                              "не существует!");
+                      
                   }));
             }
         }

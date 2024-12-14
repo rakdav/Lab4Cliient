@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Lab3.Models;
+using Lab4.Model;
+using Lab4.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +27,8 @@ namespace Lab4.View
         public AppWindow()
         {
             InitializeComponent();
+            DataContext = new AppWindowViewModel();
         }
+        
     }
 }

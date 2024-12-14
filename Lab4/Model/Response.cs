@@ -10,8 +10,7 @@ namespace Lab4.Model
     {
         public string? access_token { get; set; }
         public string? username { get; set; }
-
-        public Response(string? access_token, string? username)
+        public  Response(string? access_token, string? username)
         {
             this.access_token = access_token;
             this.username = username;
