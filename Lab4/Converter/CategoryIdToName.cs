@@ -16,6 +16,7 @@ namespace Lab4.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
             long id = (long)value;
             Task<Category> task = Task.Run(() => GetCategory(id));
             return task.Result.Name!;

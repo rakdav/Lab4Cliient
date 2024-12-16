@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4.View"
         mc:Ignorable="d"
-        Title="Главное окно" Height="450" Width="800">
+        Title="Главное окно" Height="450" Width="800"
+        Background="#333" Closed="Window_Closed">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="Справочники">
                 <MenuItem Header="Поставщики" Name="Suppliers" Click="Suppliers_Click"></MenuItem>
                 <MenuItem Header="Товары" Name="Products" Click="Products_Click"></MenuItem>
                 <Separator />
-                <MenuItem Header="Выход"></MenuItem>
+                <MenuItem Header="Выход" Click="MenuItem_Click" ></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

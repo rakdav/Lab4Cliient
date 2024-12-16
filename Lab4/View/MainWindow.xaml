@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Lab4"
         mc:Ignorable="d"
         Title="Авторизация" Height="300" Width="400" Visibility="{Binding Visibility, Mode=TwoWay}"
+        Background="#333"
         >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,8 +19,10 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox  Grid.Column="1" Margin="10 30" Text="{Binding Login}"/>
-        <PasswordBox Name="txtPassword"  Grid.Column="1" Grid.Row="1" Margin="10 30"/>
+        <TextBox  Grid.Column="1" Margin="10 25" Text="{Binding Login}"
+                  FontSize="16"/>
+        <PasswordBox Name="txtPassword"  Grid.Column="1" Grid.Row="1" Margin="10 25"
+                     FontSize="16"/>
         <Button Grid.Column="1" Grid.Row="2" Margin="10 20"
                 Content="Войти" Command="{Binding LoginCommand}" 
                 CommandParameter="{Binding ElementName=txtPassword}"/>

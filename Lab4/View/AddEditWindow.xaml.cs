@@ -1,11 +1,9 @@
 ﻿using Lab3.Models;
 using Lab4.Model;
-using Lab4.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,21 +18,15 @@ using System.Windows.Shapes;
 namespace Lab4.View
 {
     /// <summary>
-    /// Логика взаимодействия для AppWindow.xaml
+    /// Логика взаимодействия для AddEditWindow.xaml
     /// </summary>
-    public partial class AppWindow : Window
+    public partial class AddEditWindow : Window
     {
-        private static AppWindow? instance;
-        public AppWindow()
+        public ObservableCollection<Supplier> Suppliers { get; set; } = new();
+        public ObservableCollection<Category> Categories { get; set; } = new();
+        public AddEditWindow()
         {
             InitializeComponent();
-            DataContext = new AppWindowViewModel();
-        }
-        public static AppWindow getInstance()
-        {
-            if (instance == null)
-                instance = new AppWindow();
-            return instance;
         }
     }
 }

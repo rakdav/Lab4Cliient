@@ -31,8 +31,17 @@ namespace Lab4.View
 
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            AppWindow window = new AppWindow();
-            window.Show();
+            AppWindow.getInstance().Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance!.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MainWindow.Instance!.Close();
         }
     }
 }
