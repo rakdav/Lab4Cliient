@@ -32,7 +32,7 @@ namespace Lab4.View
 
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            AppWindow mainForm = AppWindow.Instance;
+            AppWindow mainForm = new AppWindow();
             mainForm.Show();
         }
 

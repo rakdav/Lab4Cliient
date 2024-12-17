@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="Товары" Height="450" Width="900"
-        Background="#333" Closed="Window_Closed">
+        Background="#333">
     <Window.Resources>
         <convert:SupplierIdToNameConverter x:Key="supplierIdToNameConverter" />
         <convert:CategoryNameConverter x:Key="categoryName" />

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4.View"
-        xmlns:convert="clr-namespace:Lab4.Converter"
+        xmlns:convert="clr-namespace:Lab4.Converter" Background="#333"
         mc:Ignorable="d"
         Title="Добавление" Height="350" Width="300">
     <Window.Resources>
@@ -21,15 +21,17 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="Name" Text="{Binding Name}" Grid.Row="0" Margin="10 15"/>
         <TextBox x:Name="Price" Text="{Binding Price}" Grid.Row="1" Margin="10 15"/>
-        <ComboBox Grid.Row="2" Margin="10 15" DisplayMemberPath="Name" SelectedValuePath="SupplierId"
-             SelectedValue="{Binding SupplierId}" Name="SupplierList"/>
+        <ComboBox Grid.Row="2" Margin="10 15" DisplayMemberPath="Name" 
+                  SelectedValuePath="SupplierId"
+             SelectedValue="{Binding SupplierId}" 
+                  Name="SupplierList"/>
         <ComboBox  Grid.Row="3" Margin="10 15" DisplayMemberPath="Name" SelectedValuePath="CategoryId"
              SelectedValue="{Binding CategoryId}"
                    Name="CategoryList"/>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             <Button x:Name="Ok" Content="Ok" Width="100" Margin="20 10" Click="Ok_Click" />
-            <Button x:Name="Cancel" Content="Cancel" Width="100" Margin="20 10" Click="Cancel_Click" />
+            <Button x:Name="Cancel" Content="Cancel" Width="100" Margin="20 0" Click="Cancel_Click" />
         </StackPanel>
     </Grid>
 </Window>
