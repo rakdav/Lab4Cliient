@@ -24,17 +24,13 @@ namespace Lab4.View
     /// </summary>
     public partial class AppWindow : Window
     {
-        private static AppWindow? instance;
+        private static Lazy<AppWindow> instance =
+        new Lazy<AppWindow>(() => new AppWindow());
         public AppWindow()
         {
             InitializeComponent();
             DataContext = new AppWindowViewModel();
         }
-        public static AppWindow getInstance()
-        {
-            if (instance == null)
-                instance = new AppWindow();
-            return instance;
-        }
+        public static AppWindow Instance => instance.Value;
     }
 }

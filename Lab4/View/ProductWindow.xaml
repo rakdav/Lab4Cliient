@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab4.View"
         xmlns:convert="clr-namespace:Lab4.Converter"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="Товары" Height="450" Width="900"
-        Background="#333">
+        Background="#333" Closed="Window_Closed">
     <Window.Resources>
         <convert:SupplierIdToNameConverter x:Key="supplierIdToNameConverter" />
         <convert:CategoryNameConverter x:Key="categoryName" />
@@ -22,23 +23,29 @@
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ListView Grid.Row="0" Margin="10" FontSize="20" ItemsSource="{Binding Products}"
+            <ListView x:Name="ProductListView" Grid.Row="0" Margin="10" FontSize="20" ItemsSource="{Binding Products}"
                   SelectedItem="{Binding SelectedProduct}" Background="#333"
                   Foreground="White">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DoubleClickCommand}"
+                                       CommandParameter="{Binding ElementName=ProductListView, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding Path=Name}"/>
                             <TextBlock Text="{Binding Path=Price}"/>
-                            <TextBlock Text="{Binding Path=CategoryId,Converter={StaticResource categoryName}}"/>
-                            <TextBlock Text="{Binding Path=SupplierId,Converter={StaticResource supplierIdToNameConverter}}"/>
+                            <!--<TextBlock Text="{Binding Path=CategoryId,Converter={StaticResource categoryName}}"/>
+                            <TextBlock Text="{Binding Path=SupplierId,Converter={StaticResource supplierIdToNameConverter}}"/>-->
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button Content="Добавить" Width="100" Margin="20 10" Command="{Binding AddCommand}"/>
-                <Button Content="Удалить" Width="100" Margin="20 10"/>
+                <Button Content="Удалить" Width="100" Margin="20 10" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedProduct}"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1" DataContext="{Binding SelectedProduct}">
